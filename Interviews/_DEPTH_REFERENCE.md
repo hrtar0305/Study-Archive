@@ -50,6 +50,10 @@
 키워드: Relational Model / SQL / ER Model / Normalization / Complex Types / Big Data·NoSQL·Vector DB
 앵커: "B+-tree 인덱스로 질의가 빨라지는 원리", "3NF vs BCNF trade-off", "벡터DB가 RAG에 쓰이는 원리"
 
+### 데이터 엔지니어링 *(KAIST 자료 외 보강 항목)*
+키워드: ETL vs ELT / 배치 vs 스트리밍 / 분산처리(MapReduce·Spark) / Data Warehouse vs Lake vs Lakehouse / 차원 모델링(Star·Snowflake schema) / OLTP vs OLAP / 파티셔닝·셔플 / 메시지큐·Kafka / 오케스트레이션(Airflow) / CDC / 컬럼너 포맷(Parquet) / 데이터 품질·거버넌스
+앵커: "배치 vs 스트리밍 trade-off와 exactly-once 보장", "Spark에서 shuffle이 비싼 이유와 줄이는 법", "OLAP 웨어하우스에서 굳이 비정규화(star schema)를 쓰는 이유"
+
 ### 자료구조·알고리즘
 키워드: Time Complexity / Sorting / Divide&Conquer / DP / Greedy / Graph algorithms / Advanced DS / NP-completeness
 앵커: "quicksort를 worst-case O(n lg n)으로 만들기", "DP로 풀리는데 greedy로 안 되는 예시와 증명", "MST T에 임의 두 정점 최단경로가 반드시 포함되는가"
