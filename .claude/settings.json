@@ -1,0 +1,31 @@
+{
+  "permissions": {
+    "deny": [
+      "Read(~/.ssh/**)",
+      "Read(~/.aws/**)",
+      "Read(~/.gnupg/**)",
+      "Read(~/.azure/**)",
+      "Read(~/.config/gcloud/**)",
+      "Read(~/.netrc)",
+      "Read(~/.npmrc)",
+      "Read(~/.pypirc)",
+      "Read(~/.git-credentials)",
+      "Read(~/.docker/config.json)",
+      "Read(~/AppData/**)",
+      "Read(//c/Windows/**)",
+      "Read(//c/Program Files/**)",
+      "Read(//c/Program Files (x86)/**)",
+      "Read(//d/**)",
+      "Edit(//d/**)",
+      "Write(//d/**)",
+      "Read(//e/**)",
+      "Edit(//e/**)",
+      "Write(//e/**)",
+      "Read(//c/Download/**)",
+      "Edit(//c/Download/**)",
+      "Write(//c/Download/**)",
+      "Bash(rm -rf:*)"
+    ],
+    "additionalDirectories": []
+  }
+}

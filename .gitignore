@@ -1,0 +1,17 @@
+# 강의 원본 자료 (저작권/용량) — 정리본과 Notion만 공유
+/Materials/
+
+# 로컬 전용 Claude 설정 (권한 잠금 settings.json은 공유)
+.claude/settings.local.json
+
+# OS / 에디터
+Thumbs.db
+Desktop.ini
+.DS_Store
+*.swp
+*~
+
+# 환경 / 비밀
+.env
+.env.*
+*.secret
