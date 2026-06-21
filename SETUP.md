@@ -13,21 +13,27 @@
 ## 2. 커넥터 연결
 Claude 앱 → 설정 → 커넥터에서 **Notion**(필요하면 GitHub도) 연결 (OAuth).
 
-## 3. Notion DB 생성 (새 계정이면 필수)
+## 3. Notion DB 2개 생성 (새 계정이면 필수)
 새 워크스페이스엔 DB가 없으므로 새로 만든다. Claude Code에 이렇게 요청:
-> "최상위에 'CS & 면접 학습 아카이브' 페이지를 만들고, 그 아래에 'CS 학습 로그' DB를 아래 스키마로 만들어줘."
+> "최상위에 'CS & 면접 학습 아카이브' 페이지를 만들고, 그 아래에 'CS 학습 로그'와 '개념 노트' DB를 SETUP.md 스키마대로 만들어줘. 두 DB는 Relation으로 연결해줘."
 
-**스키마(속성):**
+**① CS 학습 로그 (세션 기록)**
 - 제목(Title), 날짜(Date)
 - 유형(Select): `자료정리` / `모의면접`
 - 분야(Select): `OS` / `네트워크` / `DB` / `자료구조·알고리즘` / `컴퓨터구조` / `AI·ML` / `데이터 엔지니어링` / `기타`
 - 이해도(Select): `🔴 부족` / `🟡 보통` / `🟢 충분`
-- 약점·복습포인트(Text)
-- 블로그 후보(Checkbox)
+- 약점·복습포인트(Text), 블로그 후보(Checkbox)
+
+**② 개념 노트 (복습용)**
+- 제목(Title, 개념명), 분야(Select: ①과 동일)
+- 이해도(Select: 🔴/🟡/🟢)
+- 핵심요약(Text), 복습포인트(Text)
+- 관련 세션(Relation → CS 학습 로그, 양방향)
+- 블로그 후보(Checkbox), 최종수정(Last edited time)
 
 ## 4. CLAUDE.md의 ID 갱신
-생성 후 받은 **Data source ID**를 [CLAUDE.md](CLAUDE.md)의 `Data source ID:` 줄에 덮어쓴다.
-(이 ID는 워크스페이스마다 다르다.)
+생성 후 받은 **두 Data source ID**(학습 로그 ①, 개념 노트 ②)를 [CLAUDE.md](CLAUDE.md)의 각 `Data source ID:` 줄에 덮어쓴다.
+(이 ID들은 워크스페이스마다 다르다.)
 
 ## 5. 완료
 이제 동작한다:
@@ -43,5 +49,7 @@ Claude 앱 → 설정 → 커넥터에서 **Notion**(필요하면 GitHub도) 연
 |---|---|
 | Notion 워크스페이스 | JY의 Notion HQ |
 | 허브 페이지 | https://app.notion.com/p/38415050b8b081c5ac98d1db6573cc8b |
-| DB | https://app.notion.com/p/bcb3b2fc7184470cbe3fdfbb3c5268de |
-| Data source ID | `8f362694-fac3-46a7-9e89-f39f77693caf` |
+| DB ① 학습 로그 | https://app.notion.com/p/bcb3b2fc7184470cbe3fdfbb3c5268de |
+| Data source ID ① | `8f362694-fac3-46a7-9e89-f39f77693caf` |
+| DB ② 개념 노트 | https://app.notion.com/p/f58e8d2b344a4c7d925c7c7d9a57e56d |
+| Data source ID ② | `643b30c2-48b4-454e-bbc6-05df11ca873a` |
