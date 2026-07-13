@@ -58,7 +58,7 @@
 
 ### Q6. 전환 기법의 이름 (약점 → 정정됨)
 - **내 답변 요약**: 처음 "Powersort"라 답 → 힌트("intro-로 시작, in-place 보장 알고리즘") 후 "Introsort, heap sort로 전환"으로 정정. Timsort가 insertion sort를 쓴다는 것도 구분해냄.
-- **모범답안**: Introsort(Musser, 1997) — quicksort로 시작, 재귀 깊이가 `2⌊log₂N⌋` 초과 시 그 구간만 **heap sort**로 전환(worst-case O(NlogN) 보장, in-place O(1) 공간). 작은 부분배열(보통 16개 이하)은 **insertion sort**로 전환(상수 오버헤드 최적화, 깊이 기준 아님). Timsort(Python/Java) = natural run을 insertion sort로 정리 후 merge sort로 병합하는 별개의 하이브리드. Powersort = Timsort 내부에서 run 병합 순서를 정하는 정책(CPython 3.11~). 세 알고리즘의 역할이 혼동되었음.
+- **모범답안**: Introsort(Musser, 1997) — quicksort로 시작, 재귀 깊이가 `2⌊log₂N⌋`를 초과하면 그 구간만 **heap sort**로 전환해 worst-case O(NlogN)을 보장한다. 배열 재배치는 in-place지만 재귀 스택은 일반적으로 O(logN)이다. 작은 부분배열은 **insertion sort**로 전환한다. Timsort(Python/Java 객체 정렬)는 natural run을 활용해 병합하는 별개의 안정 정렬 하이브리드다. Powersort는 CPython에서 run 병합 순서를 정하는 정책이다.
 
 ### Q7. Stable의 정의
 - **내 답변 요약**: 정렬 이후 기존 상대적 순서가 유지되는 성질.
