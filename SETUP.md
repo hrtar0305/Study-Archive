@@ -10,8 +10,39 @@
 클론한 폴더를 Claude Code에서 연다. `.claude/settings.json`의 권한 잠금이 자동 적용된다.
 > ⚠️ 드라이브 문자/경로가 다르면 `.claude/settings.json`의 `deny` 경로를 본인 환경에 맞게 수정.
 
-## 2. 커넥터 연결
-Claude 앱 → 설정 → 커넥터에서 **Notion**(필요하면 GitHub도) 연결 (OAuth).
+## 2. Notion 연결
+
+연결 방식이 두 가지이고, **Claude 계정이 개인 것이냐에 따라 갈린다.**
+
+### 2-A. 개인 Claude 계정일 때 — 앱 커넥터
+Claude 앱 → 설정 → 커넥터에서 **Notion** 연결 (OAuth).
+- 간편하지만 **승인 기록이 Claude 계정에 저장**되어 같은 계정으로 로그인한 모든 기기·사용자에게 따라간다.
+
+### 2-B. 공용·조직 Claude 계정일 때 — 로컬 MCP (권장)
+계정이 아니라 **이 PC에만** 연결을 남긴다.
+
+```bash
+claude mcp add --scope local --transport http notion https://mcp.notion.com/mcp
+claude mcp login notion
+```
+
+- `--scope local` = `~/.claude.json`의 **이 프로젝트 경로 아래**에만 저장. 저장소에 커밋되지 않고 다른 기기로 따라가지 않는다.
+- `claude mcp login`은 브라우저 OAuth를 띄운다. **Notion 계정 로그인은 본인이 직접** 한다.
+- 확인: `claude mcp get notion` → `Status: ✔ Connected`
+- 정리: `claude mcp logout notion` (자격증명만 삭제) / `claude mcp remove notion -s local` (설정까지 삭제)
+
+> ⚠️ **`--scope project`는 쓰지 말 것.** `.mcp.json`을 만들어 공유 저장소에 올린다. (`.gitignore`에 차단해 뒀다)
+> ⚠️ MCP 서버는 **세션 시작 시 로드**된다. 추가·로그인 후에는 세션을 새로 열어야 도구가 보인다.
+
+### GitHub
+커넥터·`gh` CLI 없이 **git + HTTPS**만으로 충분하다. Windows 자격 증명 관리자가 자격증명을 보관한다.
+> ⚠️ 공용 PC라면 떠날 때 **Windows 자격 증명 관리자 → `git:https://github.com` 항목을 삭제**할 것.
+
+## 2-1. 이탈 시 정리 체크리스트 (공용 PC·공용 계정)
+- [ ] `claude mcp logout notion` — Notion 자격증명 삭제
+- [ ] `claude mcp remove notion -s local` — 서버 설정까지 삭제
+- [ ] Windows 자격 증명 관리자에서 `git:https://github.com` 삭제
+- [ ] Claude 앱 로그아웃
 
 ## 3. Notion DB 2개 생성 (새 계정이면 필수)
 새 워크스페이스엔 DB가 없으므로 새로 만든다. Claude Code에 이렇게 요청:

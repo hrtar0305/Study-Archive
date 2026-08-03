@@ -15,3 +15,8 @@ Desktop.ini
 .env
 .env.*
 *.secret
+
+# MCP 서버 설정 — 토큰이 들어갈 수 있으므로 절대 커밋 금지.
+# 커넥터는 반드시 local 스코프로 추가할 것 (`claude mcp add --scope local ...`).
+# project 스코프는 이 파일을 만들어 공유 저장소에 올린다.
+.mcp.json
